@@ -10,7 +10,7 @@
   "rules": {
     "comma-dangle": "off",
     "@typescript-eslint/comma-dangle": "off",
-    "semi": ["always"],
+    "semi": [2, "always"],
     "no-console": 2
   }
 }
