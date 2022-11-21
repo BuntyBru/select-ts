@@ -13,19 +13,30 @@ type SelectProps = {
 };
 
 const Select = ({ value, onChange, options }: SelectProps) => {
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <div className={styles.container}>
-      <span className={styles.value}>Value</span>
-      <button className={styles['clear-btn']}>&times;</button>
-      <div className={styles.caret}></div>
-      <ul className={styles.options}>
-        {options.map(option => (
-          <li key={option.label} className={styles.option}>
-            {option.label}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <div
+        contentEditable={true}
+        onBlur={() => {
+          setIsOpen(false);
+        }}
+        onClick={() => {
+          setIsOpen(prev => !prev);
+        }}
+        className={styles.container}>
+        <span className={styles.value}>{value?.label}</span>
+        <button className={styles['clear-btn']}>&times;</button>
+        <div className={styles.caret}></div>
+        <ul className={`${styles.options} ${isOpen ? styles.show : ''}`}>
+          {options.map(option => (
+            <li key={option.label} className={styles.option}>
+              {option.label}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 

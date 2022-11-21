@@ -10,13 +10,14 @@ const OPTIONS = [
 ];
 
 function App() {
+  const [value, setValue] = React.useState<typeof OPTIONS[0] | undefined>(OPTIONS[0]);
   return (
     <div className="App">
       <Select
-        onChange={() => {
-          // eslint-disable-next-line no-console
-          console.log('hello');
+        onChange={option => {
+          setValue(option);
         }}
+        value={value}
         options={OPTIONS}
       />
     </div>
