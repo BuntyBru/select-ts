@@ -1,0 +1,40 @@
+.select-container {
+  position: relative;
+  min-width: 200px;
+
+  &__inputBox {
+    font-size: 18px;
+    padding: 10px;
+    font-weight: 600;
+  }
+
+  &__optionsBox {
+    background-color: white;
+    color: black;
+    list-style: none;
+    padding-left: 0px;
+    height: 200px;
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    top: 32px;
+    transition: all 5s;
+
+    &--show {
+      display: block;
+    }
+
+    &--hide {
+      display: none;
+    }
+
+    li {
+      padding: 7px;
+    }
+
+    li:hover {
+      background-color: aquamarine;
+      cursor: pointer;
+    }
+  }
+}

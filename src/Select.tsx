@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './select.module.css';
+import styles from './select.module.scss';
 
 type SelectOptions = {
   label: string;
@@ -15,36 +15,29 @@ type SelectProps = {
 const Select = ({ value, onChange, options }: SelectProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <div className="select-container">
-      <input />
-      <ul>
-        <li>List Item 1</li>
-        <li>List Item 2</li>
-        <li>List Item 3</li>
-        <li>List Item 4</li>
+    <div className={styles['select-container']}>
+      <input
+        readOnly={true}
+        className={styles['select-container__inputBox']}
+        value={value?.label}
+        onBlur={() => {
+          setIsOpen(false);
+        }}
+        onClick={() => {
+          setIsOpen(prev => !prev);
+        }}
+      />
+      <ul
+        className={`${styles['select-container__optionsBox']} ${
+          isOpen
+            ? styles['select-container__optionsBox--show']
+            : styles['select-container__optionsBox--hide']
+        }`}>
+        {options?.map(option => (
+          <li key={option?.value}>{option?.label}</li>
+        ))}
       </ul>
     </div>
-
-    //   <div
-    //     contentEditable={true}
-    //     onBlur={() => {
-    //       setIsOpen(false);
-    //     }}
-    //     onClick={() => {
-    //       setIsOpen(prev => !prev);
-    //     }}
-    //     className={styles.container}>
-    //     <span className={styles.value}>{value?.label}</span>
-    //     <button className={styles['clear-btn']}>&times;</button>
-    //     <div className={styles.caret}></div>
-    //     <ul className={`${styles.options} ${isOpen ? styles.show : ''}`}>
-    //       {options.map(option => (
-    //         <li key={option.label} className={styles.option}>
-    //           {option.label}
-    //         </li>
-    //       ))}
-    //     </ul>
-    //   </div>
   );
 };
 

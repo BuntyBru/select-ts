@@ -7,6 +7,10 @@ const OPTIONS = [
   { value: 2, label: 'Second' },
   { value: 3, label: 'Third' },
   { value: 4, label: 'Fourth' },
+  { value: 5, label: 'Fifth' },
+  { value: 6, label: 'Sixth' },
+  { value: 7, label: 'Seventh' },
+  { value: 8, label: 'Eighth' },
 ];
 
 function App() {
